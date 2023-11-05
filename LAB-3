@@ -1,0 +1,111 @@
+HTML CODE:-
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Form with Validation</title>
+ <link rel="stylesheet" type="text/css" href="WT3.CSS">
+</head>
+<body>
+ <h1>FORM</h1>
+ <form id="myForm" onsubmit="return validateForm()">
+ <div>
+ <label for="name">Name:</label>
+ <input type="text" id="name" name="name" required>
+ </div>
+ <div>
+ <label for="email">Email:</label>
+ <input type="email" id="email" name="email" required>
+ </div>
+ <div>
+ <label>Gender:</label>
+ <input type="radio" id="male" name="gender" value="male" required>
+ <label for="male">Male</label>
+ <input type="radio" id="female" name="gender" value="female" required>
+ <label for="female">Female</label>
+ </div>
+ <div>
+ <label for="hobbies">Hobbies:</label>
+ <input type="checkbox" id="reading" name="hobbies" value="reading">
+ <label for="reading">Reading</label>
+ <input type="checkbox" id="gaming" name="hobbies" value="gaming">
+ <label for="gaming">Gaming</label>
+ </div>
+ <div>
+ <label for="message">Message:</label>
+ <textarea id="message" name="message" required></textarea>
+ </div>
+ <div>
+ <button type="submit">Submit</button>
+ </div>
+ </form>
+ <script src="WT3.JS"></script>
+</body>
+</html>
+CSS code:-
+body {
+ font-family: Arial, sans-serif;
+ margin: 20px;
+ }
+
+ h1 {
+ text-align: center;
+ }
+
+ form {
+ max-width: 400px;
+ margin: 0 auto;
+ }
+
+ div {
+ margin: 10px 0;
+ }
+
+ label {
+ display: inline-block;
+ width: 100px;
+ }
+
+ input[type="radio"],
+ input[type="checkbox"] {
+ margin-right: 5px;
+ }
+
+ button {
+ padding: 10px 20px;
+ background-color: #4CAF50;
+ color: #fff;
+ border: none;
+ cursor: pointer;
+ }
+
+ button:hover {
+ background-color: #45a049;
+ }
+
+JS code:-
+function validateForm() {
+ const name = document.getElementById('name').value.trim();
+ const email = document.getElementById('email').value.trim();
+ const gender = document.querySelector('input[name="gender"]:checked');
+ const hobbies = document.querySelectorAll('input[name="hobbies"]:checked');
+ const message = document.getElementById('message').value.trim();
+
+ if (!name || !email || !gender || !message) {
+ alert('Please fill in all required fields.');
+ return false;
+ }
+
+ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+ if (!email.match(emailRegex)) {
+ alert('Please enter a valid email address.');
+ return false;
+ }
+
+ const selectedGender = gender.value;
+ const selectedHobbies = Array.from(hobbies).map(hobby => hobby.value);
+
+ alert(`Form submitted successfully!\n\nName: ${name}\nEmail: ${email}\nGender:
+${selectedGender}\nHobbies: ${selectedHobbies.join(", ")}\nMessage: ${message}`);
+
+ return true;
+ }
