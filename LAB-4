@@ -1,0 +1,56 @@
+Task.service.ts:
+import { Injectable } from '@angular/core';
+@Injectable({
+providedIn: 'root'
+})
+export class TaskService {
+tasks: string[] = [];
+constructor() { }
+addTask(task: string) {
+this.tasks.push(task);
+}
+getTasks() {
+return this.tasks;
+}
+}
+Task-form.components.ts:
+import { Component } from '@angular/core';
+import { TaskService } from '../task.service';
+@Component({
+selector: 'app-task-form',
+templateUrl: './task-form.component.html',
+styleUrls: ['./task-form.component.css']
+})
+export class TaskFormComponent {
+newTask: string = '';
+constructor(private taskService: TaskService) { }
+addTask() {
+if (this.newTask.trim() !== '') {
+this.taskService.addTask(this.newTask);
+this.newTask = '';
+}
+}
+}
+Task-list.components.ts:
+import { Component } from '@angular/core';
+import { TaskService } from '../task.service';
+@Component({
+selector: 'app-task-list',
+templateUrl: './task-list.component.html',
+styleUrls: ['./task-list.component.css']
+})
+export class TaskListComponent {
+tasks: string[] = [];
+constructor(private taskService: TaskService) {
+this.tasks = this.taskService.getTasks();
+}
+}
+Task-form.component.html:
+<div>
+<input [(ngModel)]="newTask" placeholder="Enter task" />
+<button (click)="addTask()">Add Task</button>
+</div>
+Task-list.component.html:
+div *ngFor="let task of tasks">
+{{ task }}
+</div>
