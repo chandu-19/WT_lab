@@ -1,0 +1,335 @@
+
+Express.js :
+const express = require('express');
+const path = require('path');
+const app = express();
+const port = 3000;
+app.use(express.static(path.join(__dirname + '/home.html')));
+app.get('/', (req, res) => {
+res.sendFile(path.join(__dirname + '/home.html'));
+});
+app.get('/course1', (req, res) => {
+res.sendFile(path.join(__dirname + '/course1.html'));
+});
+app.get('/course2', (req, res) => {
+res.sendFile(path.join(__dirname + '/course2.html'));
+});
+app.get('/enroll', (req, res) => {
+res.sendFile(path.join(__dirname + '/enroll.html'));
+});
+app.get('/done', (req, res) => {
+res.sendFile(path.join(__dirname + '/done.html'));
+});
+app.get('/enroll2', (req, res) => {
+res.sendFile(path.join(__dirname + '/enroll2.html'));
+});
+app.listen(port, () => {
+console.log(`Server is running on http://localhost:${port}`);
+});
+Home.html :
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Management System</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+background-color: #f5f5f5;
+margin: 0;
+padding: 0;
+}
+header {
+background-color: #062534;
+color: #fff;
+padding: 20px 0;
+text-align: center;
+}
+h1 {
+font-size: 2.5rem;
+margin-bottom: 10px;
+}
+.container {
+max-width: 800px;
+margin: 20px auto;
+padding: 20px;
+background-color: #fff;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+border-radius: 5px;
+}
+.course {
+border: 1px solid #ccc;
+padding: 10px;
+margin-bottom: 10px;
+border-radius: 5px;
+background-color: #f9f9f9;
+}
+.course h2 {
+font-size: 1.5rem;
+margin-top: 0;
+}
+.course p {
+font-size: 1.2rem;
+}
+.btn {
+background-color: #062534;
+color: #fff;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+text-decoration: none;
+display: inline-block;
+margin-top: 10px;
+cursor: pointer;
+}
+.btn:hover {
+background-color: #0056b3;
+}
+</style>
+</head>
+<body>
+<header>
+<h1>Learning Management System</h1>
+<p>Online education platform</p>
+</header>
+<div class="container">
+<h2>Courses</h2>
+<div class="course">
+<h2>Course 1: Introduction to Programming</h2>
+<p>This course covers the basics of programming and computer
+science.</p>
+<a href="/course1" class="btn">View Course</a>
+</div>
+<div class="course">
+<h2>Course 2: Web Development Fundamentals</h2>
+<p>Learn the fundamentals of web development, including HTML, CSS,
+and JavaScript.</p>
+<a href="/course2" class="btn">View Course</a>
+</div>
+</div>
+</body>
+</html>
+course.html :
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Course 1: Introduction to Programming</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+background-color: #f5f5f5;
+margin: 0;
+padding: 0;
+}
+header {
+background-color: #062534;
+color: #fff;
+padding: 20px 0;
+text-align: center;
+}
+h1 {
+font-size: 2.5rem;
+margin-bottom: 10px;
+}
+.container {
+max-width: 800px;
+margin: 20px auto;
+padding: 20px;
+background-color: #fff;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+border-radius: 5px;
+}
+h2 {
+font-size: 1.5rem;
+margin-top: 0;
+}
+p {
+font-size: 1.2rem;
+}
+.btn {
+background-color:#062534;
+color: #fff;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+text-decoration: none;
+display: inline-block;
+margin-top: 10px;
+cursor: pointer;
+}
+.btn:hover {
+background-color: #0056b3;
+}
+</style>
+</head>
+<body>
+<header>
+<h1>Course 1: Introduction to Programming</h1>
+<p>Welcome to the course on the basics of programming!</p>
+</header>
+<div class="container">
+<h2>Course Overview</h2>
+<p>This course covers the fundamentals of programming, including
+concepts like variables, loops, and conditional statements. You'll also learn
+how to write and run simple programs in your chosen programming language.</p>
+<h2>Course Content</h2>
+<ul>
+<li>Lesson 1: Introduction to Programming Concepts</li>
+<li>Lesson 2: Variables and Data Types</li>
+<li>Lesson 3: Control Structures (Loops and Conditionals)</li>
+</ul>
+<a href="enroll" class="btn">Enroll in Course</a>
+</div>
+</body>
+</html>
+Enroll.html :
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enroll in Course</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+background-color: #f5f5f5;
+margin: 0;
+padding: 0;
+}
+header {
+background-color: #062534;
+color: #fff;
+padding: 20px 0;
+text-align: center;
+}
+h1 {
+font-size: 2.5rem;
+margin-bottom: 10px;
+}
+.container {
+max-width: 800px;
+margin: 20px auto;
+padding: 20px;
+background-color: #fff;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+border-radius: 5px;
+}
+h2 {
+font-size: 1.5rem;
+margin-top: 0;
+}
+label {
+display: block;
+margin-bottom: 8px;
+}
+input[type="text"] {
+width: 97%;
+padding: 10px;
+margin-bottom: 15px;
+border: 1px solid #ccc;
+border-radius: 3px;
+}
+.btn {
+background-color: #062534;
+color: #fff;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+text-decoration: none;
+display: inline-block;
+margin-top: 10px;
+cursor: pointer;
+}
+.btn:hover {
+background-color: #0056b3;
+}
+</style>
+</head>
+<body>
+<header>
+<h1>Enroll in Course</h1>
+<p>Complete the form below to enroll in the course.</p>
+</header>
+<div class="container">
+<h2>Course Information</h2>
+<p><strong>Course:</strong> Introduction to Programming</p>
+<p><strong>Description:</strong> Refer to the previous page.</p>
+<h2>Enrollment Form</h2>
+<form action="/enroll" method="post">
+<label for="fullname">Full Name:</label>
+<input type="text" id="fullname" name="fullname" required>
+<label for="email">Email Address:</label>
+<input type="text" id="email" name="email" required>
+<a href="/done" class="btn">Enroll</a>
+</form>
+</div>
+</body>
+</html>
+Done.html:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enrollment Successful</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+background-color: #f5f5f5;
+margin: 0;
+padding: 0;
+}
+header {
+background-color: #062534;
+color: #fff;
+padding: 20px 0;
+text-align: center;
+}
+h1 {
+font-size: 2.5rem;
+margin-bottom: 10px;
+}
+.container {
+max-width: 800px;
+margin: 20px auto;
+padding: 20px;
+background-color: #fff;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+border-radius: 5px;
+}
+h2 {
+font-size: 1.5rem;
+margin-top: 0;
+}
+p {
+font-size: 1.2rem;
+}
+.btn {
+background-color: #062534;
+color: #fff;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+text-decoration: none;
+}
+.btn:hover {
+background-color: #0056b3;
+}
+</style>
+</head>
+<body>
+<header>
+<h1>Enrollment Successful</h1>
+</header>
+<div class="container">
+<h2>Thank you for enrolling in the course!</h2>
+<p>Your enrollment is confirmed, and you are now registered for the
+course.</p>
+<a href="/" class="btn">Go to Home</a>
+</div>
+</body>
+</html>
